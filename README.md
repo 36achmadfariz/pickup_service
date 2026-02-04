@@ -1,8 +1,11 @@
 # Tugas Besar Pemrograman 1
 
 Nama  : Achmad Fariz Supriatna
+
 NIM   : 714252007 
+
 Kelas : RPL
+
 Judul : Web Pickup Service (Laravel)  
 
 Deskripsi:
