@@ -53,7 +53,7 @@
 <body>
     <h1>Selamat Datang di Pickup Service Kantor Pos Cilegon!</h1>
     <p>Mengelola permintaan pickup dengan cepat, mudah, dan efisien.<br>
-       Klik tombol di bawah untuk melihatmelakukan order pickup.</p>
+       Klik tombol di bawah untuk melihat atau melakukan order pickup.</p>
     <a href="{{ route('pickup_requests.index') }}" class="btn">Lihat Pickup Requests</a>
 
     <footer>
