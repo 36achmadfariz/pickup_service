@@ -1,3 +1,26 @@
+# Tugas Besar Pemrograman 1
+
+Nama  : Achmad Fariz Supriatna
+
+NIM   : 714252007 
+
+Kelas : RPL
+
+Judul : Web Pickup Service (Laravel)  
+
+Deskripsi:
+Aplikasi web untuk melakukan pickup service berbasis web menggunakan framework Laravel.
+## Authentication & Authorization
+
+Aplikasi ini menggunakan sistem autentikasi (login & register).
+- Halaman public: Landing Page (/)
+- Halaman private (wajib login): Pickup Requests (/pickup_requests)
+
+Setelah user login, sistem otomatis mengarahkan ke dashboard utama.
+Seluruh fitur utama dilindungi oleh middleware auth.
+
+
+---
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
