@@ -11,17 +11,32 @@
 
 <div class="container py-4">
 
+    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>📦 Daftar Pickup Requests</h3>
-        <a href="{{ route('pickup_requests.create') }}" class="btn btn-success">
-            + Tambah Request
-        </a>
+
+        <div class="d-flex gap-2">
+            <a href="{{ route('pickup_requests.create') }}" class="btn btn-success">
+                + Tambah Request
+            </a>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-danger">
+                    Logout
+                </button>
+            </form>
+        </div>
     </div>
 
+    <!-- Alert -->
     @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
 
+    <!-- Table -->
     <div class="card shadow-sm">
         <div class="card-body table-responsive">
 
@@ -40,35 +55,40 @@
 
                 <tbody>
                     @forelse($pickupRequests as $r)
-                    <tr>
-                        <td>{{ $r->id }}</td>
-                        <td>{{ $r->name }}</td>
-                        <td>{{ $r->pickup_address }}</td>
-                        <td>{{ $r->pickup_date }}</td>
-                        <td>{{ $r->phone }}</td>
-                        <td>
-                            <span class="badge bg-{{ $r->status == 'pending' ? 'warning' : 'success' }}">
-                                {{ ucfirst($r->status) }}
-                            </span>
-                        </td>
-                        <td>
-                            <a href="{{ route('pickup_requests.edit', $r->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                        <tr>
+                            <td>{{ $r->id }}</td>
+                            <td>{{ $r->name }}</td>
+                            <td>{{ $r->pickup_address }}</td>
+                            <td>{{ $r->pickup_date }}</td>
+                            <td>{{ $r->phone }}</td>
+                            <td>
+                                <span class="badge bg-{{ $r->status == 'pending' ? 'warning' : 'success' }}">
+                                    {{ ucfirst($r->status) }}
+                                </span>
+                            </td>
+                            <td>
+                                <a href="{{ route('pickup_requests.edit', $r->id) }}"
+                                   class="btn btn-sm btn-primary">
+                                    Edit
+                                </a>
 
-                            <form action="{{ route('pickup_requests.destroy', $r->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus data ini?')">
-                                    Hapus
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                                <form action="{{ route('pickup_requests.destroy', $r->id) }}"
+                                      method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Hapus data ini?')">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @empty
-                    <tr>
-                        <td colspan="7" class="text-center text-muted">
-                            Belum ada data
-                        </td>
-                    </tr>
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">
+                                Belum ada data
+                            </td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>
