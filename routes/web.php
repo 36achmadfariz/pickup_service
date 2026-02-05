@@ -20,4 +20,11 @@ Route::get('/', function () {
 });
 
 // CRUD Pickup Requests
-Route::resource('pickup_requests', PickupRequestController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('pickup_requests', PickupRequestController::class);
+});
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
